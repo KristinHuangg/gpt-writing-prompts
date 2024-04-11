@@ -1,8 +1,4 @@
 
-This repo borrows code from https://github.com/tenghaohuang/Uncover_implicit_bias and from https://github.com/ddemszky/textbook-analysis: 
-
-**Story bias**
-
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
@@ -21,7 +17,6 @@ This is an example of how to list things you need to use the software and how to
   pip install -r requirements.txt
   python -m spacy download en_core_web_sm  # install SpaCy models for English
   ```
-Download RocStory dataset from https://cs.rochester.edu/nlp/rocstories/
 
 ### Installation
 
@@ -29,13 +24,10 @@ Download RocStory dataset from https://cs.rochester.edu/nlp/rocstories/
 
    Install COMeT2 according to https://github.com/vered1986/comet-commonsense
 
-### Note:
-
-Any mentions of huan1287/Uncover_implicit_bias, feel free to switch for a folder under your alias {aliasname}/{foldername}.
 
 ## Basic Data Cleaning (Skip if having access to: /ssd005/projects/story_bias/human_story_prompt/story_mapping.json)
 
-1. We are using https://paperswithcode.com/dataset/writingprompts WritingPrompts dataset, which can be found in /ssd005/projects/story_bias/human_story_prompt/writingPrompts.tar.gz. Unzip and save the train.wp_source and train.wp_target in one place (huan1287/Uncover_implicit_bias/data_cleaning is the easiest). Then run /h/huan1287/Uncover_implicit_bias/data_cleaning/clean_data.py. This will create a train.wp_combined file, where each line follows the format of prompt + \<endprompt> + story
+1. We are using https://paperswithcode.com/dataset/writingprompts WritingPrompts dataset, download, unzip and save the train.wp_source and train.wp_target in one place. Then run data_cleaning/clean_data.py. This will create a train.wp_combined file, where each line follows the format of prompt + \<endprompt> + story
 
 2. Parse human written stories from WritingPrompts dataset and save in json. Format: per each prompt, save all the stories for that prompt.Feel free to change the input directory input_dir to your own directory containing train.wp_combined file. 
 
