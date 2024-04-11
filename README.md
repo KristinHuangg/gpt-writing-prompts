@@ -25,14 +25,14 @@ This is an example of how to list things you need to use the software and how to
    Install COMeT2 according to https://github.com/vered1986/comet-commonsense
 
 
-## Basic Data Cleaning (Skip if having access to: /ssd005/projects/story_bias/human_story_prompt/story_mapping.json)
+## Basic Data Cleaning
 
 1. We are using https://paperswithcode.com/dataset/writingprompts WritingPrompts dataset, download, unzip and save the train.wp_source and train.wp_target in one place. Then run data_cleaning/clean_data.py. This will create a train.wp_combined file, where each line follows the format of prompt + \<endprompt> + story
 
-2. Parse human written stories from WritingPrompts dataset and save in json. Format: per each prompt, save all the stories for that prompt.Feel free to change the input directory input_dir to your own directory containing train.wp_combined file. 
+2. Parse human written stories from WritingPrompts dataset and save in json. Format: per each prompt, save all the stories for that prompt. Feel free to change the input directory input_dir to your own directory containing train.wp_combined file. 
 
       ```sh
-      sbatch save_stories_gpu.slrm
+      bash save_stories.sh
       ```
 
 <!-- USAGE EXAMPLES -->
