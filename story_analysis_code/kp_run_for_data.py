@@ -20,7 +20,6 @@ parser.add_argument('--lexPath', required=True)
 parser.add_argument('--w2vPath', required=True)
 parser.add_argument('--attrMethod', required=False, default='full')
 parser.add_argument('--scoreMethod', required=False, default='avg')
-# parser.add_argument('--povPath', required=True)
 
 '''
 Storing outputs: store (prompt ID, story-within-prompt-ID, output score) in a CSV -- checkpointing implemented
@@ -51,12 +50,6 @@ def write_checkpoint(outPath, done_inds):
         writer = csv.writer(f)
         for ind in done_inds:
             writer.writerow([ind])
-
-
-# def write_checkpoint(outPath, done_inds):
-#     ckpt_file = os.path.join(outPath, 'ckpt.json')
-#     with open(ckpt_file, 'w') as f:
-#         json.dump(list(done_inds), f)
 
 def read_processed_stories(read_path=None):
     if read_path == None:
@@ -132,8 +125,6 @@ def read_input_stories(dataPath, processed_story_path=None):
         # process them later
         targets.append(ts)
     
-    # # very hardcoded
-    # edit: don't actually need the prompts or original targets! just use the function above to read only processed targets...
     p_dict = read_processed_stories(processed_story_path)
     processed_targets = []
     processed_targets = []
@@ -172,7 +163,6 @@ class GetScore:
 
         self.text_to_attr = kp_funcs.TextToAttrs(attr_method = attr_method)
         self.attr_to_score = kp_funcs.AttrsToScore(lexicon=lex, emb_model=w2v_model, method=score_method)
-        self.story_processor = process_story_class.ProcessStory()
 
         if score_method == 'axis':
             if attr_method == 'comet':
