@@ -37,7 +37,7 @@ Download the [GPT-WritingPrompts dataset from HuggingFace](https://huggingface.c
 The files `data/human_wp_stories.json` and `data/gpt_wp_stories.json` are JSON-formatted files containing the human-written (from the [WritingPrompts]() dataset) and gpt3.5-generated stories for the prompts from the training subset of the [WritingPrompts]() dataset.
 
 ### PoV information and processed stories
-In the `data/meta_info` folder, there are two gzipped CSV files that contain PoV information and the protagonist-replaced (formatted for extracting protagonist attributes --  see Code subsection below) story for each human-written and machine-generated story.
+In the `data/` folder, there are two gzipped CSV files, `human_info.csv.gzip` and `gpt_info.csv.gzip`, that contain PoV information and the protagonist-replaced (formatted for extracting protagonist attributes --  see Code subsection below) story for each human-written and machine-generated story.
 
 ### Story scores
 The `outputs/` folder contains the computed story scores for each dimension, for each attribute extraction and attribute scoring method, for both the human-written and gpt-generated story subsets.
@@ -68,7 +68,7 @@ There are several parts to the pipeline. We describe them sequentially below.
 
 - **Inferring point-of-view**: We infer the point-of-view (first or second person, male/female/other third person) of each story using the SpanBERT coreference resolution model from AllenNLP. The most frequently-mentioned character entity is termed the *protagonist*. Code for this step is in `data_parsing/pov_utils.py`.
 
-- **Replacing protagonist tokens**: We next replace each protagonist-coreferent token in each story (i.e, all tokens that refer to the protagonist, inferred using the SpanBERT model) with the special `protagonistA` token. This makes it easy to then extract attributes associated with the protagonist. Code to do this is in `data_parsing/process_stories.py`. We provide these processed stories in the `data/meta_info` files.
+- **Replacing protagonist tokens**: We next replace each protagonist-coreferent token in each story (i.e, all tokens that refer to the protagonist, inferred using the SpanBERT model) with the special `protagonistA` token. This makes it easy to then extract attributes associated with the protagonist. Code to do this is in `data_parsing/process_stories.py`. We provide these processed stories in the `data/xx_info.csv.gzip` files.
 
 ### Main method
 - **Extracting attributes**: We now extract the protagonist-attributes that we want to score for each story. As described in the story, we use two main methods: dependency relations using SpaCy (`sub`), and commonsense inferece with COMeT (`comet`). In `story_analysis/attr_score_funcs.py`, you can find the class `TextToAttrs` that implements these methods.
