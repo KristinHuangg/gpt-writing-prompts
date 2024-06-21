@@ -14,8 +14,8 @@ def clean_human_dataset(line):
     if not line.isspace():
         tmp = line.split(" <endprompt> ")
         prompt = tmp[0]
-        if 'Two identical twins switch bodies .' in prompt:
-            prompt = 'Two identical twins switch bodies .'
+        # if 'Two identical twins switch bodies .' in prompt:
+        #     prompt = 'Two identical twins switch bodies .'
         human_story = tmp[1]
     return prompt, human_story
 

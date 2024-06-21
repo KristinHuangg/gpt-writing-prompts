@@ -61,15 +61,13 @@ def get_gpt_response(prompt, role, model=MODEL, temp=0.95):
 
 SAVE_EVERY = 10
 def main(ip_path, op_path, start_ind, num_prompts):
-    # going in reverse!
+    
     with open(ip_path, 'r') as f:
         lines = json.loads(f.read().strip())
     
     end_ind = start_ind + num_prompts
 
     all_prompts = list(lines.keys()) # dictionary is ordered as of python3.7
-    # reverse it
-    all_prompts = all_prompts[::-1]
 
     prompts = all_prompts[start_ind : end_ind]
     inds = [i for i in range(start_ind, end_ind)]
