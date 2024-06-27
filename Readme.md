@@ -21,7 +21,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. COMeT2 for commensense attributes
+1. COMeT2 for commonsense attributes
 
    Install COMeT2 according to https://github.com/vered1986/comet-commonsense
 
